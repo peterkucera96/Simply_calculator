@@ -1,43 +1,43 @@
-# Program kalkulacky
-print("Vitajte v kalkulacke")
-opakovanie = True
-while opakovanie:
+# Simple calculator
+print("Welcome to the calculator")
+repeat = True
+while repeat:
     operator = None
     while operator not in ['+', '-', '*', '/']:
-        operator = input("Vyberte operator (+ - * /): ")
+        operator = input("Enter an operator (+ - * /): ")
         if operator not in ['+', '-', '*', '/']:
-            print('Chyba: Zadali ste nespravny operator!')
+            print('Error: You entered an invalid operator!')
 
     
     while True:
         try:
-            cislo1 = float(input("Zadajte číslo 1: "))
+            number_1 = float(input("Enter the number 1: "))
             break
         except ValueError:
-            print("Chyba: Zadali ste nesprávne číslo!")
+            print("Error: You entered the wrong number!")
 
     while True:
         try:
-            cislo2 = float(input("Zadajte číslo 2: "))
+            number_2 = float(input("Enter the number 2: "))
+            if operator == '/' and number_2 == 0:
+                print('Error: Division by zero!')
+                continue
             break
         except ValueError:
-            print("Chyba: Zadali ste nesprávne číslo!")
+            print("Error: You entered the wrong number!")
 
 
     if operator == '+':
-        print('Vysledok je: ', cislo1 + cislo2)
+        print('Result is: ', number_1 + number_2)
     elif operator == '-':
-        print('Vysledok je: ', cislo1 - cislo2)
+        print('Result is: ', number_1 - number_2)
     elif operator == '*':
-        print('Vysledok je: ', cislo1 * cislo2)
+        print('Result is: ', number_1 * number_2)
     elif operator == '/':
-        if cislo1 != 0:
-            print('Cislom 0 sa neda delit.')
-        else:
-            print('Vysledok je: ', cislo1 / cislo2)
+        print('Result is: ', number_1 / number_2)
 
-    pokracovat = input("Chcete pokračovať? (Y/N): ")
-    if pokracovat.upper() != "Y":
-        opakovanie = False
+    resume = input("Do you want to continue? (Y/N): ")
+    if resume.upper() != "Y":
+        repeat = False
 
-print('Dakujem ze ste pouzili kalkulacku.')
+print('Thank you for using the calculator.')
